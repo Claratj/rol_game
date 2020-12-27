@@ -1,0 +1,15 @@
+{
+  "name": "rolgame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ex-6-effects.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "disintegrate": "^1.0.1",
+    "socket.io": "^3.0.4"
+  }
+}
