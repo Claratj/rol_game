@@ -4,10 +4,10 @@ window.onload = ()=>{
 
 let charactersSelected = [];
 let playButton = document.createElement('button');
+let refreshBtn = document.createElement('button');
 let winner = document.createElement('div');
 winner.classList.add('winner');
 let winPlayer = document.createElement('h2');
-const refreshBtn = document.createElement('button');
 
 const showCharacters = () => {
 
@@ -65,7 +65,7 @@ const showCharacters = () => {
             div$$.appendChild(card);
             card.appendChild(cardSubBackground);
             cardSubBackground.appendChild(cardFrame);
-            img$$.addEventListener('click', () =>{
+            card.addEventListener('click', () =>{
                 chooseFighters(character);
             });      
         };
@@ -82,7 +82,7 @@ function chooseFighters(fighter) {
             playButton.innerHTML = 'Lets Play!';
             document.body.appendChild(playButton);
             playButton.addEventListener('click', ()=>{ 
-                letsPlay(charactersSelected)
+                letsPlay()
             });
     } 
     }
@@ -90,12 +90,12 @@ function chooseFighters(fighter) {
 // animaciones del botón
 // let particles = new particles('button')
 
-function letsPlay (fighters) {
+function letsPlay () {
     // var particles = new particles(playButton);
     // particles.disintegrate();
     playButton.remove();
-    let player1 = fighters[0];
-    let player2 = fighters[1];
+    let player1 = charactersSelected[0];
+    let player2 = charactersSelected[1];
     let lifeVitalityP2 = player2.vitality;
     let lifeVitalityP1 = player1.vitality;
     while(lifeVitalityP2 > 0 && lifeVitalityP1 > 0 ) {
@@ -115,11 +115,13 @@ function letsPlay (fighters) {
     }
     document.body.appendChild(winner);
     winner.appendChild(winPlayer);
-    refreshBtn.classList.add('refreshBtn');
+    // refreshBtn.classList.add('refreshBtn');
     refreshBtn.innerHTML= "Let's Play Again!";
     winner.appendChild(refreshBtn);
     refreshBtn.addEventListener('click', () => {startAgain()});
-
+    // console.log(refreshBtn);
+    console.log(2, winPlayer);
+    
 };
 
 function playerTotalDamage (playerDamage) {
@@ -147,11 +149,14 @@ function playerTotalDamage (playerDamage) {
 }
 
 function startAgain() {
+    
     charactersSelected = [];
-    winPlayer.remove();
-    refreshBtn.remove();
-    winner.remove();
-    // console.log(winner);
+    // winPlayer.remove();
+    // refreshBtn.remove();
+    winner.parentNode.removeChild(winner);
+    // console.log(winPlayer),
+    console.log(winner);
+    
 };
 
 

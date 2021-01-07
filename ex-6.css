@@ -158,7 +158,8 @@ button {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    padding: 2rem;
+    padding: 2rem 4.5rem;
+    border-radius: 0.7rem;
     z-index: 10;
     font-weight: 700;
     font-size: 5rem;
@@ -167,6 +168,12 @@ h2 {
     color: #fff;
     font-size: 2rem;
 }
-
+/* .winner {
+    position: relative;
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+} */
 
 /* img$$.setAttribute('style', 'width: 300px; height: 300px;'); */
