@@ -66,6 +66,7 @@ const showCharacters = () => {
             card.appendChild(cardSubBackground);
             cardSubBackground.appendChild(cardFrame);
             card.addEventListener('click', () =>{
+                card.style.border = "3px solid blue";
                 chooseFighters(character);
             });      
 
@@ -77,7 +78,8 @@ const showCharacters = () => {
 
 function chooseFighters(fighter) {
 
-    if (charactersSelected.length < 2 ) {   
+    if (charactersSelected.length < 2 ) {
+
         charactersSelected.push(fighter);
         if (charactersSelected.length === 2) {
             playButton.innerHTML = 'Lets Play!';
@@ -93,6 +95,12 @@ function chooseFighters(fighter) {
 function letsPlay () {
 
     playButton.remove();
+
+    // Tablero de rondas
+    let table = document.createElement('div');
+    table.classList.add('table');
+    document.body.appendChild(table);
+
     let player1 = charactersSelected[0];
     let player2 = charactersSelected[1];
     let lifeVitalityP2 = player2.vitality;
@@ -146,7 +154,10 @@ function playerTotalDamage (playerDamage) {
 }
 
 function startAgain() {
-    
+    let cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+        card.style.border = "1px solid black";
+    });
     charactersSelected = [];
     winner.innerHTML = '';
     console.log(winner);

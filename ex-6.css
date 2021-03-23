@@ -73,9 +73,14 @@ html {
     margin-top: 5.6rem;
     border-radius: 25px;
     box-sizing: border-box;
-    box-shadow: -8px 9px 16px -3px gray;
-    
+    box-shadow: -8px 9px 16px -3px gray;    
 }
+
+.card:hover {
+    border: 3px solid blue;
+}
+
+
 .green-part {
     background-image: url(public/images/background.jpg);
     background-repeat: no-repeat;
@@ -177,3 +182,20 @@ h2 {
 } */
 
 /* img$$.setAttribute('style', 'width: 300px; height: 300px;'); */
+
+.table {
+    width: 60vw;
+    height: 60vh;
+    display: table-cell;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 0.7rem;
+    padding: 2rem 4.5rem;
+    z-index: 9;
+    background-color: grey;
+}
