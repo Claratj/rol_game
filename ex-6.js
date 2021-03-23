@@ -95,6 +95,7 @@ function chooseFighters(fighter) {
 function letsPlay () {
 
     playButton.remove();
+    console.log(charactersSelected);
 
     // Tablero de rondas
 
@@ -102,22 +103,31 @@ function letsPlay () {
     table.classList.add('table');
     document.body.appendChild(table);
 
+    let imgPlayerOne = charactersSelected[0].avatar;
+    let imgPlayerTwo = charactersSelected[1].avatar;
+
+    console.log(imgPlayerOne);
+
     for (let i = 0; i < charactersSelected.length; i++) {
-        // const fighter = charactersSelected[i];
+
        let fighter = document.createElement('div');
         fighter.classList.add('fighter');
-        table.appendChild(fighter);
-
         
+        let fighterImg = document.createElement('div');
+        fighterImg.classList.add('fighter-img');
+        fighterImg.style.backgroundImage = `url('${charactersSelected[i].avatar}')`;
+
+        fighter.appendChild(fighterImg);
+        table.appendChild(fighter);
     }
 
-    let fighter = document.createElement('div');
-    fighter.classList.add('card-selecter');
+  //Jugando
 
     let player1 = charactersSelected[0];
     let player2 = charactersSelected[1];
     let lifeVitalityP2 = player2.vitality;
     let lifeVitalityP1 = player1.vitality;
+    
     while(lifeVitalityP2 > 0 && lifeVitalityP1 > 0 ) {
         //Juega player1
         let score1 = playerTotalDamage(player1.damage) - player2.defense ;

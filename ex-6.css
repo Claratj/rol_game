@@ -220,4 +220,14 @@ h2 {
     0 0 0 2px #171314,
     0 0 0 5px #0e3f47,
     -3px 3px 2px 5px #171314;
+    display: flex;
+    justify-content: center;
+}
+.fighter-img {
+    width: 18rem;
+    height: 18rem;
+    background-position: top;
+    background-size: contain;
+    border-radius: 100%;
+    margin: 1.5rem;
 }
