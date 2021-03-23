@@ -13,18 +13,12 @@ let player1Game = [];
 
 const intro= () => {
     const splash = document.querySelector('.splash');
-    console.log(splash);
-    // document.addEventListener('DOMContentLoaded', (e)=>{
-        setTimeout(()=> {
-            showCharacters(), 
-            splash.className = 'none';
-            console.log(splash);
-        }, 2000);
-    // });
+    setTimeout(()=> {
+        showCharacters(), 
+        splash.className = 'none';
+        console.log(splash);
+    }, 2000);
 
-    // setTimeout(
-
-    //     3000);
 }
 
 const showCharacters = () => {
@@ -119,10 +113,10 @@ function letsPlay () {
     let player2 = charactersSelected[1];
     let lifeVitalityP2 = player2.vitality;
     let lifeVitalityP1 = player1.vitality;
+    let gamePlayer1 = [];
+    let gamePlayer2 = [];
 
-    // let gamePlayer1 = document.createElement('p');
-    // let gamePlayer2 = document.createElement('p');
-    
+   
     while(lifeVitalityP2 > 0 && lifeVitalityP1 > 0 ) {
         //Juega player1
         let score1 = playerTotalDamage(player1.damage) - player2.defense ;
@@ -153,19 +147,35 @@ function letsPlay () {
     table.classList.add('table');
     document.body.appendChild(table);
     
+    let divOne = document.createElement('div');
+    let divTwo = document.createElement('div');
     
-    for (let i = 0; i < charactersSelected.length; i++) {
-        
-        let fighter = document.createElement('div');
-        fighter.classList.add('fighter');
-        
-        let fighterImg = document.createElement('div');
-        fighterImg.classList.add('fighter-img');
-        fighterImg.style.backgroundImage = `url('${charactersSelected[i].avatar}')`;
 
-        fighter.appendChild(fighterImg);
-        table.appendChild(fighter);
-    }
+    let imgOne = document.createElement('div');
+    let imgTwo = document.createElement('div');
+        
+    divOne.classList.add('fighter');
+    imgOne.classList.add('fighter-img');
+    imgOne.style.backgroundImage = `url('${charactersSelected[0].avatar}')`;
+    divOne.appendChild(imgOne);
+
+
+
+    divTwo.classList.add('fighter');
+    imgTwo.classList.add('fighter-img');
+    imgTwo.style.backgroundImage = `url('${charactersSelected[1].avatar}')`;
+    divTwo.appendChild(imgTwo);
+
+
+    // let gamePlayer1 = document.createElement('p');
+    // gamePlayer1.innerHTML = `${lifeVitalityP1}`;
+
+    // divOne.appendChild(gamePlayer1);
+
+    table.appendChild(divOne);
+    table.appendChild(divTwo);
+
+
 
     
     //Ganador y botón de jugar de nuevo
