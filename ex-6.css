@@ -14,6 +14,46 @@ html {
 
 }
 
+.splash{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    color: white;
+    margin: auto;
+    text-align: center;
+    line-height: 90vh;
+    font-size: 5rem;
+
+}
+.none .splash{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -10;
+    color: none;
+    margin: auto;
+    text-align: center;
+    line-height: 90vh;
+    font-size: 5rem;
+    transition: all 0.5s;
+}
+
+@keyframes fadeIn{
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
 /* .fog {
     position: relative;
     height: 100vh;
@@ -214,7 +254,7 @@ h2 {
     width: 40vw;
     height: 70vh;
     margin: 0 1.5rem;
-    background-color: hotpink;
+    /* background-color: hotpink; */
     border-radius: 0.7rem;
     box-shadow: 
     0 0 0 2px #171314,
