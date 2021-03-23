@@ -1,4 +1,4 @@
-window.onload = ()=>{
+window.onload = () => {
     showCharacters();
 }
 
@@ -68,6 +68,7 @@ const showCharacters = () => {
             card.addEventListener('click', () =>{
                 chooseFighters(character);
             });      
+
         };
     }) 
 } 
@@ -80,6 +81,7 @@ function chooseFighters(fighter) {
         charactersSelected.push(fighter);
         if (charactersSelected.length === 2) {
             playButton.innerHTML = 'Lets Play!';
+            console.log('aqui');
             document.body.appendChild(playButton);
             playButton.addEventListener('click', ()=>{ 
                 letsPlay()
@@ -87,12 +89,9 @@ function chooseFighters(fighter) {
     } 
     }
 }
-// animaciones del botón
-// let particles = new particles('button')
 
 function letsPlay () {
-    // var particles = new particles(playButton);
-    // particles.disintegrate();
+
     playButton.remove();
     let player1 = charactersSelected[0];
     let player2 = charactersSelected[1];
@@ -115,11 +114,9 @@ function letsPlay () {
     }
     document.body.appendChild(winner);
     winner.appendChild(winPlayer);
-    // refreshBtn.classList.add('refreshBtn');
     refreshBtn.innerHTML= "Let's Play Again!";
     winner.appendChild(refreshBtn);
     refreshBtn.addEventListener('click', () => {startAgain()});
-    // console.log(refreshBtn);
     console.log(2, winPlayer);
     
 };
@@ -151,23 +148,10 @@ function playerTotalDamage (playerDamage) {
 function startAgain() {
     
     charactersSelected = [];
-    // winPlayer.remove();
-    // refreshBtn.remove();
-    winner.parentNode.removeChild(winner);
-    // console.log(winPlayer),
+    winner.innerHTML = '';
     console.log(winner);
     
 };
 
-
-//efectos
-
-// anime({
-//     targets: 'div',
-//     translateX: 250,
-//     rotate: '1turn',
-//     backgroundColor: '#FFF',
-//     duration: 800
-//   });
 
 
