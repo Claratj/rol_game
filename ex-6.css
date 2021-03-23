@@ -28,7 +28,7 @@ html {
     font-size: 5rem;
 
 }
-.none .splash{
+.splash.none{
     position: fixed;
     opacity: 0;
     top: 0;

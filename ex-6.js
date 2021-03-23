@@ -13,15 +13,18 @@ let player1Game = [];
 
 const intro= () => {
     const splash = document.querySelector('.splash');
-    document.addEventListener('DOMContentLoaded', (e)=>{
+    console.log(splash);
+    // document.addEventListener('DOMContentLoaded', (e)=>{
         setTimeout(()=> {
-            splash.classList.add('none');
+            showCharacters(), 
+            splash.className = 'none';
+            console.log(splash);
         }, 2000);
-    });
+    // });
 
-    setTimeout(
-        ()=> {showCharacters()}, 
-        3000);
+    // setTimeout(
+
+    //     3000);
 }
 
 const showCharacters = () => {
