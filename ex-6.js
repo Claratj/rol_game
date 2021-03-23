@@ -97,9 +97,22 @@ function letsPlay () {
     playButton.remove();
 
     // Tablero de rondas
+
     let table = document.createElement('div');
     table.classList.add('table');
     document.body.appendChild(table);
+
+    for (let i = 0; i < charactersSelected.length; i++) {
+        // const fighter = charactersSelected[i];
+       let fighter = document.createElement('div');
+        fighter.classList.add('fighter');
+        table.appendChild(fighter);
+
+        
+    }
+
+    let fighter = document.createElement('div');
+    fighter.classList.add('card-selecter');
 
     let player1 = charactersSelected[0];
     let player2 = charactersSelected[1];

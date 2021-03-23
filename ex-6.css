@@ -184,8 +184,8 @@ h2 {
 /* img$$.setAttribute('style', 'width: 300px; height: 300px;'); */
 
 .table {
-    width: 60vw;
-    height: 60vh;
+    width: 70vw;
+    height: 80vh;
     display: table-cell;
     vertical-align: middle;
     position: absolute;
@@ -198,4 +198,14 @@ h2 {
     padding: 2rem 4.5rem;
     z-index: 9;
     background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fighter {
+    width: 40vw;
+    height: 70vh;
+    background-color: hotpink;
+    margin: 0 2rem;
 }
