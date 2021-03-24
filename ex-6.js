@@ -245,27 +245,17 @@ function playerTotalDamage (playerDamage) {
 
 function startAgain() {
     refreshBtn.remove();
-    // winner.remove();
-
-    // location.reload()
 
     let cards = document.querySelectorAll(".card");
     cards.forEach(card => {
         card.style.border = "1px solid black";
     });
     
-    // let divTable = document.querySelectorAll(".fighter");
-    // divTable.style.border = "none";
+    let divTable = document.querySelectorAll(".fighter");
+    divTable.style.border = "none";
 
     charactersSelected = [];
     table.remove();
-    // let battleP = document.querySelectorAll(".p-battle"); 
-    // battleP.remove();
-    // let battleDivs = document.querySelectorAll(".fighter");
-    // battleDivs.remove();
-    // table = '';
-    // pOne.innerHTML = '';
-    // pTwo.innerHTML = '';
     winner.innerHTML = '';
     divOne.innerHTML = '';
     divTwo.innerHTML = '';
