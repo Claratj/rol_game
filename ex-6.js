@@ -172,7 +172,7 @@ function letsPlay () {
     imgTwo.style.backgroundImage = `url('${charactersSelected[1].avatar}')`;
     // pTwo.classList.add('ml12');
 
-
+    
     //Print todo
     let x = 0;
     let j = 0;
@@ -181,21 +181,22 @@ function letsPlay () {
     for (let index = 1; index < (scorePlayer1.length*2); index++) {
         console.log(index);
         if (index % 2 === 0 && index < (scorePlayer1.length*2)-1){
-            pTwo.innerHTML += `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer2[j]} de daño` + '<br>';
-            pOne.innerHTML += `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer1[j]}.` + '<br>';
+
+            pTwo.innerHTML = `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer2[j]} de daño` + '<br>';
+            pOne.innerHTML = `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer1[j]}.` + '<br>';
             j++;
         } else if (index % 2 !== 0 && index < (scorePlayer1.length*2)-1) {
-            pTwo.innerHTML += `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer2[x]}.` + '<br>';
-            pOne.innerHTML += `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer1[x]} de daño` + '<br>';
+            pTwo.innerHTML = `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer2[x]}.` + '<br>';
+            pOne.innerHTML = `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer1[x]} de daño` + '<br>';
             x++;
         } else {
             if (vitalityPlayer1[j] <= 0) {
-                pOne.innerHTML += `El jugador fue derrotado durante la batalla.` + '<br>';
-                pTwo.innerHTML += `¡Vencedor de la batalla!` + '<br>';
+                pOne.innerHTML = `El jugador fue derrotado durante la batalla.` + '<br>';
+                pTwo.innerHTML = `¡Vencedor de la batalla!` + '<br>';
                 divTwo.style.border = "3px solid blue";
             } else if (vitalityPlayer2[x] <= 0) {
-                pTwo.innerHTML += `El jugador fue derrotado durante la batalla.` + '<br>';
-                pOne.innerHTML += `¡Vencedor de la batalla!` + '<br>';
+                pTwo.innerHTML = `El jugador fue derrotado durante la batalla.` + '<br>';
+                pOne.innerHTML = `¡Vencedor de la batalla!` + '<br>';
                 divOne.style.border = "3px solid blue";
             }
         }
@@ -208,6 +209,8 @@ function letsPlay () {
 
     table.appendChild(divOne);
     table.appendChild(divTwo);
+
+
     
     //Ganador y botón de jugar de nuevo
     document.body.appendChild(winner);
@@ -216,7 +219,7 @@ function letsPlay () {
     document.body.appendChild(refreshBtn);
     refreshBtn.addEventListener('click', () => {startAgain()});
 
-
+    //Efecto Winner
     anime.timeline({loop: true}).add({
     targets: '.ml15 .word',
     scale: [14,1],
