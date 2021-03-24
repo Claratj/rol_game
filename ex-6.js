@@ -9,6 +9,7 @@ let refreshBtn = document.createElement('button');
 let winner = document.createElement('div');
 winner.classList.add('winner');
 let winPlayer = document.createElement('h2');
+winPlayer.classList.add('ml15');
 let player1Game = [];
 let table = document.createElement('div');
 let pOne = document.createElement('p');
@@ -163,13 +164,13 @@ function letsPlay () {
     divOne.classList.add('fighter');
     imgOne.classList.add('fighter-img');
     imgOne.style.backgroundImage = `url('${charactersSelected[0].avatar}')`;
-    pOne.classList.add('p-battle');
+    // pOne.classList.add('ml12');
     
     //Div Player 2
     divTwo.classList.add('fighter');
     imgTwo.classList.add('fighter-img');
     imgTwo.style.backgroundImage = `url('${charactersSelected[1].avatar}')`;
-    pTwo.classList.add('p-battle');
+    // pTwo.classList.add('ml12');
 
 
     //Print todo
@@ -214,6 +215,23 @@ function letsPlay () {
     refreshBtn.innerHTML= "Let's Play Again!";
     document.body.appendChild(refreshBtn);
     refreshBtn.addEventListener('click', () => {startAgain()});
+
+
+    anime.timeline({loop: true}).add({
+    targets: '.ml15 .word',
+    scale: [14,1],
+    opacity: [0,1],
+    easing: "easeOutCirc",
+    duration: 600,
+    delay: (el, i) => 800 * i
+  }).add({
+    targets: '.ml15',
+    opacity: 0,
+    duration: 600,
+    easing: "easeOutExpo",
+    delay: 800
+  });
+
 };
 
 
@@ -257,7 +275,6 @@ function startAgain() {
     winner.innerHTML = '';
     divOne.innerHTML = '';
     divTwo.innerHTML = '';
-    // console.log(winner);
     
 };
 

@@ -276,3 +276,16 @@ h2 {
     border-radius: 100%;
     margin: 1.5rem;
 }
+
+/* Efectos ganador */
+.ml15 {
+    /* font-weight: 800; */
+    font-size: 6em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+  
+.ml15 .word {
+display: inline-block;
+line-height: 1em;
+}
