@@ -127,19 +127,13 @@ function letsPlay () {
         scorePlayer1.push(score1);
         vitalityPlayer2.push(lifeVitalityP2);
         
-        // console.log('Este es es score1 '+ score1);
-        // console.log('Esta es la vida mientras tanto del J2 ' + lifeVitalityP2);
-        
         if(lifeVitalityP2 > 0) {
             // Juega player2
             let score2 = playerTotalDamage(player2.damage) - player1.defense ;
             lifeVitalityP1 = lifeVitalityP1 - score2;
             
             scorePlayer2.push(score2);
-            vitalityPlayer1.push(lifeVitalityP1);
-            // console.log('Este es es score2 '+ score2);
-            // console.log('Esta es la vida mientras tanto del J1 ' + lifeVitalityP1);
-    
+            vitalityPlayer1.push(lifeVitalityP1);  
         }
     }
     if (lifeVitalityP2 <= 0) {
@@ -157,16 +151,12 @@ function letsPlay () {
     let pOne = document.createElement('p');
     let pTwo = document.createElement('p');
 
-
     //Div Player 1
     let divOne = document.createElement('div');
     let imgOne = document.createElement('div');
     divOne.classList.add('fighter');
     imgOne.classList.add('fighter-img');
     imgOne.style.backgroundImage = `url('${charactersSelected[0].avatar}')`;
-    // scorePlayer1.forEach(printAttacks);
-
-    
     
     //Div Player 2
     let divTwo = document.createElement('div');
@@ -174,7 +164,6 @@ function letsPlay () {
     divTwo.classList.add('fighter');
     imgTwo.classList.add('fighter-img');
     imgTwo.style.backgroundImage = `url('${charactersSelected[1].avatar}')`;
-    // vitalityPlayer2.forEach(printVitality);
 
     //Print todo
     let x = 0;
@@ -203,29 +192,13 @@ function letsPlay () {
         }
         divTwo.appendChild(pTwo);
         divOne.appendChild(pOne);
-
-        
     }
-    
-    
     
     divOne.appendChild(imgOne);
     divTwo.appendChild(imgTwo);
-    // let gamePlayer1 = document.createElement('p');
-    // gamePlayer1.innerHTML = `${lifeVitalityP1}`;
-
-    // divOne.appendChild(gamePlayer1);
-    console.log(scorePlayer1);
-    console.log(scorePlayer2);
-    console.log(vitalityPlayer2);
-    console.log(vitalityPlayer1);
-
 
     table.appendChild(divOne);
     table.appendChild(divTwo);
-
-
-
     
     //Ganador y botón de jugar de nuevo
     document.body.appendChild(winner);
@@ -235,6 +208,8 @@ function letsPlay () {
     refreshBtn.addEventListener('click', () => {startAgain()});
 };
 
+
+//Juego de datos
 function playerTotalDamage (playerDamage) {
 
     let sixDiceResult =0;
