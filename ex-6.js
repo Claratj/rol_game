@@ -116,7 +116,8 @@ function letsPlay () {
     playButton.remove();
     pOne.innerHTML = '';
     pTwo.innerHTML = '';
-
+    divOne.style.border = "0px";
+    divTwo.style.border = "0px";
 
     //Jugando
     
@@ -250,9 +251,6 @@ function startAgain() {
     cards.forEach(card => {
         card.style.border = "1px solid black";
     });
-    
-    let divTable = document.querySelectorAll(".fighter");
-    divTable.style.border = "none";
 
     charactersSelected = [];
     table.remove();
