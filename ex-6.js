@@ -143,7 +143,6 @@ function letsPlay () {
     }
     
     // Tablero de rondas
-
     let table = document.createElement('div');
     table.classList.add('table');
     document.body.appendChild(table);
@@ -172,7 +171,6 @@ function letsPlay () {
 
     for (let index = 1; index < (scorePlayer1.length*2); index++) {
         console.log(index);
-        // const round = scorePlayer1[index] + 1;
         if (index % 2 === 0 && index < (scorePlayer1.length*2)-1){
             pTwo.innerHTML += `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer2[j]} de daño` + '<br>';
             pOne.innerHTML += `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer1[j]}.` + '<br>';
@@ -216,7 +214,6 @@ function playerTotalDamage (playerDamage) {
     let tenDiceResult =0;
     let twentyDiceResult = 0;
     let totalDamage = 0;
-
 
     for (const damage of playerDamage) {
         if(damage.includes('d6')){
