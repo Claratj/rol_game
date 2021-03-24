@@ -262,6 +262,8 @@ h2 {
     -3px 3px 2px 5px #171314;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .fighter-img {
     width: 18rem;
