@@ -10,6 +10,14 @@ let winner = document.createElement('div');
 winner.classList.add('winner');
 let winPlayer = document.createElement('h2');
 let player1Game = [];
+let table = document.createElement('div');
+let pOne = document.createElement('p');
+let pTwo = document.createElement('p');
+let divOne = document.createElement('div');
+let imgOne = document.createElement('div');
+let divTwo = document.createElement('div');
+let imgTwo = document.createElement('div');
+
 
 const intro= () => {
     const splash = document.querySelector('.splash');
@@ -106,6 +114,9 @@ function chooseFighters(fighter) {
 function letsPlay () {
 
     playButton.remove();
+    pOne.innerHTML = '';
+    pTwo.innerHTML = '';
+
 
     //Jugando
     
@@ -143,26 +154,22 @@ function letsPlay () {
     }
     
     // Tablero de rondas
-    let table = document.createElement('div');
     table.classList.add('table');
     document.body.appendChild(table);
 
-    let pOne = document.createElement('p');
-    let pTwo = document.createElement('p');
 
     //Div Player 1
-    let divOne = document.createElement('div');
-    let imgOne = document.createElement('div');
     divOne.classList.add('fighter');
     imgOne.classList.add('fighter-img');
     imgOne.style.backgroundImage = `url('${charactersSelected[0].avatar}')`;
+    pOne.classList.add('p-battle');
     
     //Div Player 2
-    let divTwo = document.createElement('div');
-    let imgTwo = document.createElement('div');
     divTwo.classList.add('fighter');
     imgTwo.classList.add('fighter-img');
     imgTwo.style.backgroundImage = `url('${charactersSelected[1].avatar}')`;
+    pTwo.classList.add('p-battle');
+
 
     //Print todo
     let x = 0;
@@ -182,10 +189,12 @@ function letsPlay () {
         } else {
             if (vitalityPlayer1[j] <= 0) {
                 pOne.innerHTML += `El jugador fue derrotado durante la batalla.` + '<br>';
-                pTwo.innerHTML += `Vencedor de la batalla.` + '<br>';
+                pTwo.innerHTML += `¡Vencedor de la batalla!` + '<br>';
+                divTwo.style.border = "3px solid blue";
             } else if (vitalityPlayer2[x] <= 0) {
                 pTwo.innerHTML += `El jugador fue derrotado durante la batalla.` + '<br>';
-                pOne.innerHTML += `Vencedor de la batalla.` + '<br>';
+                pOne.innerHTML += `¡Vencedor de la batalla!` + '<br>';
+                divOne.style.border = "3px solid blue";
             }
         }
         divTwo.appendChild(pTwo);
@@ -236,14 +245,31 @@ function playerTotalDamage (playerDamage) {
 
 function startAgain() {
     refreshBtn.remove();
+    // winner.remove();
+
+    // location.reload()
 
     let cards = document.querySelectorAll(".card");
     cards.forEach(card => {
         card.style.border = "1px solid black";
     });
+    
+    // let divTable = document.querySelectorAll(".fighter");
+    // divTable.style.border = "none";
+
     charactersSelected = [];
+    table.remove();
+    // let battleP = document.querySelectorAll(".p-battle"); 
+    // battleP.remove();
+    // let battleDivs = document.querySelectorAll(".fighter");
+    // battleDivs.remove();
+    // table = '';
+    // pOne.innerHTML = '';
+    // pTwo.innerHTML = '';
     winner.innerHTML = '';
-    console.log(winner);
+    divOne.innerHTML = '';
+    divTwo.innerHTML = '';
+    // console.log(winner);
     
 };
 
