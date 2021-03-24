@@ -150,9 +150,9 @@ function letsPlay () {
         }
     }
     if (lifeVitalityP2 <= 0) {
-        winPlayer.innerHTML = 'Win Player 1';
+        winPlayer.innerHTML = '<span class="word">Win</span> <span class="word">Player 1</span>';
     } else {
-        winPlayer.innerHTML = 'Win Player 2';
+        winPlayer.innerHTML = '<span class="word">Win</span> <span class="word">Player 2</span>';
     }
     
     // Tablero de rondas
