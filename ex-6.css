@@ -36,8 +36,7 @@ button {
 h2 {
     color: #fff;
     text-align: center;
-    font-size: 2rem;
-    background-color: aqua;
+    font-size: 10rem;
 }
 
 .splash{
@@ -217,13 +216,14 @@ h2 {
     font-weight: 700;
 }
 
-/* .winner {
-    position: relative;
-    top: 70%;
+.winner {
+    position: absolute;
+    top: 30%;
     left: 50%;
+    z-index: 25;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-} */
+}
 
 /* img$$.setAttribute('style', 'width: 300px; height: 300px;'); */
 

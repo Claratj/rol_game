@@ -202,7 +202,6 @@ function letsPlay () {
     document.body.appendChild(winner);
     winner.appendChild(winPlayer);
     refreshBtn.innerHTML= "Let's Play Again!";
-    // winner.appendChild(refreshBtn);
     document.body.appendChild(refreshBtn);
     refreshBtn.addEventListener('click', () => {startAgain()});
 };
