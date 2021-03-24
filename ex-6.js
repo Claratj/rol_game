@@ -113,8 +113,10 @@ function letsPlay () {
     let player2 = charactersSelected[1];
     let lifeVitalityP2 = player2.vitality;
     let lifeVitalityP1 = player1.vitality;
-    let gamePlayer1 = [];
-    let gamePlayer2 = [];
+    let scorePlayer1 = [];
+    let scorePlayer2 = [];
+    let vitalityPlayer1 = [];
+    let vitalityPlayer2 = [];
 
    
     while(lifeVitalityP2 > 0 && lifeVitalityP1 > 0 ) {
@@ -122,16 +124,21 @@ function letsPlay () {
         let score1 = playerTotalDamage(player1.damage) - player2.defense ;
         lifeVitalityP2 = lifeVitalityP2 - score1;
 
-        console.log('Este es es score1 '+ score1);
-        console.log('Esta es la vida mientras tanto del J2 ' + lifeVitalityP2);
-
+        scorePlayer1.push(score1);
+        vitalityPlayer2.push(lifeVitalityP2);
+        
+        // console.log('Este es es score1 '+ score1);
+        // console.log('Esta es la vida mientras tanto del J2 ' + lifeVitalityP2);
+        
         if(lifeVitalityP2 > 0) {
             // Juega player2
             let score2 = playerTotalDamage(player2.damage) - player1.defense ;
             lifeVitalityP1 = lifeVitalityP1 - score2;
-
-            console.log('Este es es score2 '+ score2);
-            console.log('Esta es la vida mientras tanto del J1 ' + lifeVitalityP1);
+            
+            scorePlayer2.push(score2);
+            vitalityPlayer1.push(lifeVitalityP1);
+            // console.log('Este es es score2 '+ score2);
+            // console.log('Esta es la vida mientras tanto del J1 ' + lifeVitalityP1);
     
         }
     }
@@ -146,31 +153,52 @@ function letsPlay () {
     let table = document.createElement('div');
     table.classList.add('table');
     document.body.appendChild(table);
-    
-    let divOne = document.createElement('div');
-    let divTwo = document.createElement('div');
-    
 
+    let attack = document.createElement('p');
+    let vitalityRemain = document.createElement('p');
+    attack.classList.add('attack');
+    vitalityRemain.classList.add('attack');
+
+    function printAttacks(element, index){
+        attack.innerHTML += `Ronda ${index} : ` + `Ataca infligiendo ${element} de daño` + '<br>';
+        return attack;
+    }
+
+    function printVitality(element, index){
+        vitalityRemain.innerHTML += `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${element}.` + '<br>';
+        return vitalityRemain;
+    }
+
+    //Div Player 1
+    let divOne = document.createElement('div');
     let imgOne = document.createElement('div');
-    let imgTwo = document.createElement('div');
-        
     divOne.classList.add('fighter');
     imgOne.classList.add('fighter-img');
     imgOne.style.backgroundImage = `url('${charactersSelected[0].avatar}')`;
+    scorePlayer1.forEach(printAttacks);
+
     divOne.appendChild(imgOne);
+    divOne.appendChild(attack);
 
-
-
+    
+    //Div Player 2
+    let divTwo = document.createElement('div');
+    let imgTwo = document.createElement('div');
     divTwo.classList.add('fighter');
     imgTwo.classList.add('fighter-img');
     imgTwo.style.backgroundImage = `url('${charactersSelected[1].avatar}')`;
+    vitalityPlayer2.forEach(printVitality);
+    
     divTwo.appendChild(imgTwo);
+    divTwo.appendChild(vitalityRemain);
 
 
     // let gamePlayer1 = document.createElement('p');
     // gamePlayer1.innerHTML = `${lifeVitalityP1}`;
 
     // divOne.appendChild(gamePlayer1);
+    console.log(scorePlayer1);
+    console.log(vitalityPlayer2);
 
     table.appendChild(divOne);
     table.appendChild(divTwo);
