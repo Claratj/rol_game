@@ -179,18 +179,27 @@ function letsPlay () {
     //Print todo
     let x = 0;
     let j = 0;
+    console.log(scorePlayer1.length);
 
-    for (let index = 1; index < ((scorePlayer1.length)*2+1) ; index++) {
+    for (let index = 1; index < (scorePlayer1.length*2); index++) {
+        console.log(index);
         // const round = scorePlayer1[index] + 1;
-        if (index % 2 === 0) {
+        if (index % 2 === 0 && index < (scorePlayer1.length*2)-1){
             pTwo.innerHTML += `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer2[j]} de daño` + '<br>';
             pOne.innerHTML += `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer1[j]}.` + '<br>';
             j++;
-        } else {
+        } else if (index % 2 !== 0 && index < (scorePlayer1.length*2)-1) {
             pTwo.innerHTML += `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer2[x]}.` + '<br>';
             pOne.innerHTML += `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer1[x]} de daño` + '<br>';
             x++;
-
+        } else {
+            if (vitalityPlayer1[j] <= 0) {
+                pOne.innerHTML += `El jugador fue derrotado durante la batalla.` + '<br>';
+                pTwo.innerHTML += `Vencedor de la batalla.` + '<br>';
+            } else if (vitalityPlayer2[x] <= 0) {
+                pTwo.innerHTML += `El jugador fue derrotado durante la batalla.` + '<br>';
+                pOne.innerHTML += `Vencedor de la batalla.` + '<br>';
+            }
         }
         divTwo.appendChild(pTwo);
         divOne.appendChild(pOne);
