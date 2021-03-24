@@ -202,7 +202,8 @@ function letsPlay () {
     document.body.appendChild(winner);
     winner.appendChild(winPlayer);
     refreshBtn.innerHTML= "Let's Play Again!";
-    winner.appendChild(refreshBtn);
+    // winner.appendChild(refreshBtn);
+    document.body.appendChild(refreshBtn);
     refreshBtn.addEventListener('click', () => {startAgain()});
 };
 
@@ -235,6 +236,8 @@ function playerTotalDamage (playerDamage) {
 }
 
 function startAgain() {
+    refreshBtn.remove();
+
     let cards = document.querySelectorAll(".card");
     cards.forEach(card => {
         card.style.border = "1px solid black";
