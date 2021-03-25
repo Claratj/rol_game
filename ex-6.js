@@ -176,64 +176,129 @@ function letsPlay () {
     //Print todo
     let x = 0;
     let j = 0;
-    console.log(scorePlayer1.length);
+    // console.log(scorePlayer1.length);
+
+    // for (let index = 1; index < (scorePlayer1.length*2); index++) {
+    //     console.log(index);
+    //     battle(index);
+    // }
+
+    // function battle (index) {
+    //     setTimeout(()=>{
+    //         if (index % 2 === 0 && index < (scorePlayer1.length*2)-1){
+    //             pTwo.innerHTML = `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer2[j]} de daño` + '<br>';
+    //             pOne.innerHTML = `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer1[j]}.` + '<br>';
+    //             j++;
+    //     } else if (index % 2 !== 0 && index < (scorePlayer1.length*2)-1) {
+    //             pTwo.innerHTML = `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer2[x]}.` + '<br>';
+    //             pOne.innerHTML = `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer1[x]} de daño` + '<br>';
+    //             x++;
+    //     } else {
+    //         if (vitalityPlayer1[j] <= 0) {
+    //                 pOne.innerHTML = `El jugador fue derrotado durante la batalla.` + '<br>';
+    //                 pTwo.innerHTML = `¡Vencedor de la batalla!` + '<br>';
+    //                 divTwo.style.border = "3px solid blue";
+    
+    //         } else if (vitalityPlayer2[x] <= 0) {
+    //                 pTwo.innerHTML = `El jugador fue derrotado durante la batalla.` + '<br>';
+    //                 pOne.innerHTML = `¡Vencedor de la batalla!` + '<br>';
+    //                 divOne.style.border = "3px solid blue";
+    //         }
+    //     }
+            
+    //     }, 3000);
+    // }
+    // divTwo.appendChild(pTwo);
+    // divOne.appendChild(pOne);
+
+    //-------------------------------------------------------------------
+    let p1 = [];
+    let p2 = [];
 
     for (let index = 1; index < (scorePlayer1.length*2); index++) {
-        console.log(index);
-        if (index % 2 === 0 && index < (scorePlayer1.length*2)-1){
-
-            pTwo.innerHTML = `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer2[j]} de daño` + '<br>';
-            pOne.innerHTML = `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer1[j]}.` + '<br>';
-            j++;
-        } else if (index % 2 !== 0 && index < (scorePlayer1.length*2)-1) {
-            pTwo.innerHTML = `Ronda ${index} : ` + `Su vitalidad se ve reducida a ${vitalityPlayer2[x]}.` + '<br>';
-            pOne.innerHTML = `Ronda ${index} : ` + `Ataca infligiendo ${scorePlayer1[x]} de daño` + '<br>';
-            x++;
-        } else {
-            if (vitalityPlayer1[j] <= 0) {
-                pOne.innerHTML = `El jugador fue derrotado durante la batalla.` + '<br>';
-                pTwo.innerHTML = `¡Vencedor de la batalla!` + '<br>';
-                divTwo.style.border = "3px solid blue";
-            } else if (vitalityPlayer2[x] <= 0) {
-                pTwo.innerHTML = `El jugador fue derrotado durante la batalla.` + '<br>';
-                pOne.innerHTML = `¡Vencedor de la batalla!` + '<br>';
-                divOne.style.border = "3px solid blue";
+            // console.log(index);
+        
+            if (index % 2 === 0 && index < (scorePlayer1.length*2)-1){
+            
+                p2.push(`Ronda ${index} : Ataca infligiendo ${scorePlayer2[j]} de daño`);
+                p1.push(`Ronda ${index} : Su vitalidad se ve reducida a ${vitalityPlayer1[j]}.`);
+                j++;
+            } else if (index % 2 !== 0 && index < (scorePlayer1.length*2)-1) {
+                p2.push(`Ronda ${index} : Su vitalidad se ve reducida a ${vitalityPlayer2[x]}.`);
+                p1.push(`Ronda ${index} : Ataca infligiendo ${scorePlayer1[x]} de daño`);
+                x++;
+            } else {
+                if (vitalityPlayer1[j] <= 0) {
+                    p1.push(`El jugador fue derrotado durante la batalla.`);
+                    p2.push(`¡Vencedor de la batalla!`);
+                    divTwo.style.border = "3px solid blue";
+                } else if (vitalityPlayer2[x] <= 0) {
+                    p2.push(`El jugador fue derrotado durante la batalla.`);
+                    p1.push(`¡Vencedor de la batalla!`);
+                    divOne.style.border = "3px solid blue";
+                }
             }
-        }
-        divTwo.appendChild(pTwo);
-        divOne.appendChild(pOne);
+            // divTwo.appendChild(pTwo);
+            // divOne.appendChild(pOne);
     }
+
+    // p1.forEach(element => {
+    //     setTimeout(()=>{
+    //         // divOne.appendChild(pOne = p);
+    //         console.log(element)
+    //     },2000);
+    // })
+    // for (var i = 0; i <= p1.length; ++i){
+    //   delay(i);}
+
+    function delay(i) {
+        
+        console.log(p1[i]);
+        console.log(p2[i]);
+        
+        if(i<p1.length-1){ 
+            setTimeout(function(){
+                delay(i+1)
+            }, 2000);
+        }else{
+            console.log("Butoon +ganador");  
+            //Ganador y botón de jugar de nuevo
+            document.body.appendChild(winner);
+            winner.appendChild(winPlayer);
+            refreshBtn.innerHTML= "Let's Play Again!";
+            document.body.appendChild(refreshBtn);
+            refreshBtn.addEventListener('click', () => {startAgain()});
+        
+            //Efecto Winner
+            anime.timeline({loop: true}).add({
+            targets: '.ml15 .word',
+            scale: [14,1],
+            opacity: [0,1],
+            easing: "easeOutCirc",
+            duration: 600,
+            delay: (el, i) => 800 * i
+          }).add({
+            targets: '.ml15',
+            opacity: 0,
+            duration: 600,
+            easing: "easeOutExpo",
+            delay: 800
+          });
+        }
+      }
+      
+      delay(0)
+    // console.log(p1);
+    
+    //-------------------------------------------------------------------
     
     divOne.appendChild(imgOne);
     divTwo.appendChild(imgTwo);
-
+    
     table.appendChild(divOne);
     table.appendChild(divTwo);
 
 
-    
-    //Ganador y botón de jugar de nuevo
-    document.body.appendChild(winner);
-    winner.appendChild(winPlayer);
-    refreshBtn.innerHTML= "Let's Play Again!";
-    document.body.appendChild(refreshBtn);
-    refreshBtn.addEventListener('click', () => {startAgain()});
-
-    //Efecto Winner
-    anime.timeline({loop: true}).add({
-    targets: '.ml15 .word',
-    scale: [14,1],
-    opacity: [0,1],
-    easing: "easeOutCirc",
-    duration: 600,
-    delay: (el, i) => 800 * i
-  }).add({
-    targets: '.ml15',
-    opacity: 0,
-    duration: 600,
-    easing: "easeOutExpo",
-    delay: 800
-  });
 
 };
 
