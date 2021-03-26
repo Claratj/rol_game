@@ -255,10 +255,10 @@ h2 {
     width: 18rem;
     height: 18rem;
     background-position: top;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     border-radius: 100%;
-    margin: 1.5rem;
+    margin: 1.5rem 0 14rem 0;
 }
 .fighter {
     color: white;
@@ -277,6 +277,9 @@ h2 {
     align-items: center;
     flex-direction: column;
 }
+.p-battle {
+    font-size: 2rem;
+}
 
 /* Efectos ganador */
 .ml15 {
@@ -290,3 +293,5 @@ h2 {
     display: inline-block;
 /*  line-height: 1em; */
 }
+
+/* Efectos imagen lucha  */
