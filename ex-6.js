@@ -27,64 +27,7 @@ let p2 = [];
 let text='';
 let z=0;
 
-function typeWriter() {
- 
-    if ((z < text1.length) || (z < text2.length))  {
-        pOne.innerHTML += text1.charAt(z);
-        pTwo.innerHTML += text2.charAt(z);
-        z++;
-        setTimeout(typeWriter, 100);
-    }
-}
 
-function delay(i) {
-    
-    text1=p1[i];
-    text2=p2[i];
-    z=0;
-    w=0;
-    pOne.innerHTML="";
-    pTwo.innerHTML="";
-    
-    typeWriter();
-    
-    
-    //Efectos ataque
-    if(i<p1.length-1){ 
-        if (i%2==0){
-            // console.log("Ronda" + i +"jugador1 atacando");
-        }else{
-            // console.log("Ronda" + i +"jugador2 atacando");
-        }
-        setTimeout(function(){
-            delay(i+1);;
-        }, 6000);
-    }else{
-        
-        //Ganador y botón de jugar de nuevo
-        document.body.appendChild(winner);
-        winner.appendChild(winPlayer);
-        refreshBtn.innerHTML= "Let's Play Again!";
-        document.body.appendChild(refreshBtn);
-        refreshBtn.addEventListener('click', () => {startAgain()});
-        
-        //Efecto Winner
-        anime.timeline({loop: true}).add({
-            targets: '.ml15 .word',
-            scale: [14,1],
-            opacity: [0,1],
-            easing: "easeOutCirc",
-            duration: 600,
-            delay: (el, i) => 800 * i
-        }).add({
-            targets: '.ml15',
-            opacity: 0,
-            duration: 600,
-            easing: "easeOutExpo",
-            delay: 800
-        });
-    }
-}
 
 const intro= () => {
     const splash = document.querySelector('.splash');
@@ -162,7 +105,7 @@ const showCharacters = () => {
 } 
 
 
-
+//Eligiendo personajes
 function chooseFighters(fighter) {
     
     if (charactersSelected.length < 2 ) {
@@ -178,6 +121,77 @@ function chooseFighters(fighter) {
     }
 }
 
+//Efecto descripción de las rondas
+function typeWriter() {
+ 
+    if ((z < text1.length) || (z < text2.length))  {
+        pOne.innerHTML += text1.charAt(z);
+        pTwo.innerHTML += text2.charAt(z);
+        z++;
+        setTimeout(typeWriter, 100);
+    }
+}
+
+function delay(i) {
+    
+    text1=p1[i];
+    text2=p2[i];
+    z=0;
+    w=0;
+    pOne.innerHTML="";
+    pTwo.innerHTML="";
+    
+    typeWriter();
+    
+    
+    //Efectos ataque
+    if(i<p1.length-1){ 
+        if (i%2==0){
+            // console.log("Ronda" + i +"jugador1 atacando");
+            imgTwo.style.animation = "glitch 1s linear infinite";
+            imgOne.style.animation = "none";
+            imgOne.style.animation = "bounce 1s linear infinite";
+
+        }else{
+            // console.log("Ronda" + i +"jugador2 atacando");
+            imgTwo.style.animation = "none";
+            imgOne.style.animation = "glitch 1s linear infinite";
+            imgTwo.style.animation = "bounce 1s linear infinite";
+
+
+        }
+        setTimeout(function(){
+            delay(i+1);;
+        }, 6000);
+    }else{
+        
+        //Ganador y botón de jugar de nuevo
+        document.body.appendChild(winner);
+        winner.appendChild(winPlayer);
+        refreshBtn.innerHTML= "Let's Play Again!";
+        document.body.appendChild(refreshBtn);
+        refreshBtn.addEventListener('click', () => {startAgain()});
+        
+        //Efecto Winner
+        anime.timeline({loop: true}).add({
+            targets: '.ml15 .word',
+            scale: [14,1],
+            opacity: [0,1],
+            easing: "easeOutCirc",
+            duration: 600,
+            delay: (el, i) => 800 * i
+        }).add({
+            targets: '.ml15',
+            opacity: 0,
+            duration: 600,
+            easing: "easeOutExpo",
+            delay: 800
+        });
+    }
+}
+
+
+//Juguemos
 function letsPlay () {
     
     playButton.remove();
@@ -229,14 +243,14 @@ function letsPlay () {
     
     //Div Player 1
     divOne.classList.add('fighter');
-    imgOne.classList.add('fighter-img');
+    imgOne.classList.add('fighter-img-one');
     imgOne.style.backgroundImage = `url('${charactersSelected[0].avatar}')`;
     divOne.appendChild(imgOne);
     // pOne.classList.add('ml12');
     
     //Div Player 2
     divTwo.classList.add('fighter');
-    imgTwo.classList.add('fighter-img');
+    imgTwo.classList.add('fighter-img-two');
     imgTwo.style.backgroundImage = `url('${charactersSelected[1].avatar}')`;
     divTwo.appendChild(imgTwo);
     // pTwo.classList.add('ml12');
@@ -277,9 +291,6 @@ function letsPlay () {
     divTwo.appendChild(pTwo);
     
     delay(0)
-    // console.log(p1);
-    
-    //-------------------------------------------------------------------
     
     table.appendChild(divOne);
     table.appendChild(divTwo);
