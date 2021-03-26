@@ -146,17 +146,25 @@ function delay(i) {
     
     //Efectos ataque
     if(i<p1.length-1){ 
+
         if (i%2==0){
             // console.log("Ronda" + i +"jugador1 atacando");
             imgTwo.style.animation = "glitch 1s linear infinite";
+            imgTwo.style.border = "4px solid red";
             imgOne.style.animation = "none";
             imgOne.style.animation = "bounce 1s linear infinite";
+            imgOne.style.border = "4px solid blue";
+
 
         }else{
             // console.log("Ronda" + i +"jugador2 atacando");
             imgTwo.style.animation = "none";
             imgOne.style.animation = "glitch 1s linear infinite";
             imgTwo.style.animation = "bounce 1s linear infinite";
+            imgTwo.style.border = "4px solid blue";
+            imgOne.style.border = "4px solid red";
+
+
 
 
         }
