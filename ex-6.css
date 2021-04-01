@@ -10,8 +10,75 @@ html {
     background-image: url(public/images/body.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
+
 }
 
+img {
+    border-radius: 2rem;
+    height: 30rem;
+    margin: 0 10px;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 2rem 4.5rem;
+    border-radius: 0.7rem;
+    z-index: 10;
+    font-weight: 700;
+    font-size: 5rem;
+}
+
+h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 10rem;
+}
+
+.splash{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    color: white;
+    margin: auto;
+    text-align: center;
+    line-height: 90vh;
+    font-size: 5rem;
+
+}
+.splash.none{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -10;
+    color: none;
+    margin: auto;
+    text-align: center;
+    line-height: 90vh;
+    font-size: 5rem;
+    transition: all 0.5s;
+}
+
+@keyframes fadeIn{
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
 /* .fog {
     position: relative;
     height: 100vh;
@@ -73,9 +140,14 @@ html {
     margin-top: 5.6rem;
     border-radius: 25px;
     box-sizing: border-box;
-    box-shadow: -8px 9px 16px -3px gray;
-    
+    box-shadow: -8px 9px 16px -3px gray;    
 }
+
+.card:hover {
+    border: 3px solid blue;
+}
+
+
 .green-part {
     background-image: url(public/images/background.jpg);
     background-repeat: no-repeat;
@@ -137,36 +209,161 @@ html {
     font-size: 2rem;
     
 }
-
-
 .name {
     font-size: 2.5rem;
     margin-left: 10px;
-    /* align-self: baseline; */
     font-weight: 700;
 }
 
-img {
-    border-radius: 2rem;
-    height: 30rem;
-    margin: 0 10px;
-}
-
-button {
+.winner {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
+    z-index: 25;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    padding: 2rem;
-    z-index: 10;
-    font-weight: 700;
-    font-size: 5rem;
 }
-h2 {
-    color: #fff;
+
+/* img$$.setAttribute('style', 'width: 300px; height: 300px;'); */
+
+.table {
+    width: 70vw;
+    height: 80vh;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.7rem;
+    padding: 2rem 4.5rem;
+    z-index: 9;
+    background: linear-gradient( 0deg, rgba(201, 216, 201, .3), rgba(201, 216, 209, .3) ),
+    url(https://www.wildtextures.com/wp-content/uploads/wildtextures-leather-Campo-grey.jpg);
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 
+    0 0 0 2px #171314,
+    0 0 0 5px #0e3f47,
+    -3px 3px 2px 5px #171314;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fighter-img-one, .fighter-img-two {
+    width: 18rem;
+    height: 18rem;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    margin: 1.5rem 0 14rem 0;
+}
+
+@keyframes glitch{
+    2%,64%{
+      transform: translate(2px,0) skew(0deg);
+    }
+    4%,60%{
+      transform: translate(-2px,0) skew(0deg);
+    }
+    62%{
+      transform: translate(0,0) skew(5deg); 
+    }
+}
+
+.fighter-img-two:before, .fighter-img-one:before, 
+.fighter-img-two:after, .fighter-img-one:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.fighter-img-two:before, .fighter-img-one:before{
+    animation: glitchTop 1s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  
+}
+
+.fighter-img-two:after, .fighter-img-one:after{
+    animation: glitchBotom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+    2%,64%{
+      transform: translate(-2px,0);
+    }
+    4%,60%{
+      transform: translate(-2px,0);
+    }
+    62%{
+      transform: translate(-22px,5px) skew(21deg); 
+    }
+  }
+
+
+@keyframes glitchTop{
+    2%,64%{
+      transform: translate(2px,-2px);
+    }
+    4%,60%{
+      transform: translate(-2px,2px);
+    }
+    62%{
+      transform: translate(13px,-1px) skew(-13deg); 
+    }
+  }
+
+  @keyframes bounce{
+
+       0%   { transform: scale(1,1)      translateY(0); }
+        10%  { transform: scale(1.1,.9)   translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-100px); }
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        57%  { transform: scale(1,1)      translateY(-7px); }
+        64%  { transform: scale(1,1)      translateY(0); }
+        100% { transform: scale(1,1)      translateY(0); }
+}
+
+
+  
+
+.fighter {
+    color: white;
+    font-size: 1.5rem;
+    width: 40vw;
+    height: 70vh;
+    margin: 0 1.5rem;
+    border-radius: 6px;
+    background-color: black;
+    box-shadow: 
+    0 0 0 2px #171314,
+    0 0 0 5px #0e3f47,
+    -3px 3px 2px 5px #171314;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.p-battle {
     font-size: 2rem;
 }
 
+/* Efectos ganador */
+.ml15 {
+    /* font-weight: 800; */
+    font-size: 6em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+  
+.ml15, .word {
+    display: inline-block;
+/*  line-height: 1em; */
+}
 
-/* img$$.setAttribute('style', 'width: 300px; height: 300px;'); */
+/* Efectos imagen lucha  */
