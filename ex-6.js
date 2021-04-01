@@ -31,9 +31,11 @@ let z=0;
 
 const intro= () => {
     const splash = document.querySelector('.splash');
+    const title = document.querySelector('h1');
     setTimeout(()=> {
         showCharacters(), 
         splash.className = 'none';
+        title.style.display = 'none';
         console.log(splash);
     }, 2000);
     
